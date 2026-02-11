@@ -3,6 +3,7 @@ import { container } from "@/lib/settings";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { useState } from "react";
+import TopBar from "./module/topBar";
 
 const getInter = Inter({
   variable: "--font-geist-mono",
@@ -52,6 +53,7 @@ export function CallToAction() {
 export default function Header({}) {
   return (
     <header className={`w-[100%] p-0 m-0  absolute top-0 left-0`}>
+      <TopBar />
       <div
         className={`${container} mx-auto flex justify-between py-4 items-center `}
       >

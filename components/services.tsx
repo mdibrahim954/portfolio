@@ -94,7 +94,7 @@ export const services: servicesIterface[] = [
 ];
 
 export function Services() {
-  const cardStyle = `w-[calc(25%-20px)] p-[10px] rounded-[10px] bg-[#ffffff12] backdrop-blur-lg`;
+  const cardStyle = `w-[calc(25%-20px)] p-[10px] rounded-[15px] bg-[#ffffff12] backdrop-blur-lg`;
   const cardTitle = `${ibmPlexSans.className} font-medium text-lg text-[#fff]`;
   const cardParaGrap = `${ibmPlexSans.className} font-normal text-sm text-[#fff] text-center `;
 
@@ -113,9 +113,9 @@ export function Services() {
           <p
             className={`w-1/2 mx-auto text-center text-[#fff] ${ibmPlexSans.className}`}
           >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
+            {`Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
             nihil praesentium voluptate id reiciendis? Obcaecati, quam quasi?
-            Voluptatum, modi ducimus?
+            Voluptatum, modi ducimus?`}
           </p>
         </div>
         <div className={`flex flex-wrap justify-center gap-[20px] mt-[30px]`}>

@@ -103,15 +103,15 @@ export function Projects() {
             <h3
               className={`text-center text-[#000] inline mx-auto text-[30px] font-medium ${getInter.className}`}
             >
-              Projects
+              {`Projects`}
             </h3>
           </div>
           <p
             className={`w-1/2 mx-auto text-center text-[#000] ${ibmPlexSans.className}`}
           >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
+            {`Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
             nihil praesentium voluptate id reiciendis? Obcaecati, quam quasi?
-            Voluptatum, modi ducimus?
+            Voluptatum, modi ducimus?`}
           </p>
         </div>
         <div className={`flex flex-wrap gap-[20px] mt-[30px]`}>
@@ -126,7 +126,7 @@ export function Projects() {
                   alt={card.title}
                 />
               </CardHeader>
-              <CardContent className={`px-[15px]`}>
+              <CardContent className={`px-[15px] z-10 relative`}>
                 <CardTitle className={cardTitle + ` inline gap-2`}>
                   {card.title}{" "}
                   {card.terms.map((term, idx) => (
