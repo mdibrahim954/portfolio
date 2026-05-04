@@ -47,7 +47,7 @@ export function NavBar() {
 }
 
 export function CallToAction() {
-  let buttonStyle = `p-2 rounded-full bg-[#000] text-[#fff] ${getInter.className}`;
+  const buttonStyle = `p-2 rounded-full bg-[#000] text-[#fff] ${getInter.className}`;
   return <button className={buttonStyle}>Hire Me!</button>;
 }
 export default function Header({}) {

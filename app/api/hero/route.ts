@@ -31,3 +31,18 @@ export async function POST(request: Request) {
         headers: { "Content-Type": "application/json" },
     });
 }
+
+export async function PUT(request: Request) {
+    const { id, name, value } = await request.json();
+    const { data, error } = await supabase.from("options").update({ data_type: name, data_value: value }).eq("id", id).select("*").single();
+    if (error) {
+        return new Response(JSON.stringify({ error: error.message , code: 500 }), {
+            status: 500,
+            headers: { "Content-Type": "application/json" },
+        });
+    }
+    return new Response(JSON.stringify({ data }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+    });
+}
