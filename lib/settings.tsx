@@ -20,3 +20,8 @@ export const personalInformation = {
   bEmail: "naimbhuiya@devshark.net",
   location: "Dhaka, Bangladesh",
 };
+
+export function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}

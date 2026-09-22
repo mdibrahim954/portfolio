@@ -1,4 +1,5 @@
-// app/layout.tsx ✅ — শুধু HTML shell
+import { Toaster } from "@/components/ui/sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,8 +8,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* ❌ এখান থেকে Navbar/Footer সরিয়ে দিন */}
         {children}
+        <Toaster />
       </body>
     </html>
   );

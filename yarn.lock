@@ -3707,6 +3707,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cn@npm:^0.2.5":
+  version: 0.2.5
+  resolution: "cn@npm:0.2.5"
+  bin:
+    cn: bin/cn.mjs
+  checksum: 10c0/16d104653495f834a7aada7acb02714685bcebcf39d4038353e63c0222085ddfdabbb1c14080f227d2e86dca7e75bd79bf819375416649893d22d303b9d88684
+  languageName: node
+  linkType: hard
+
 "code-block-writer@npm:^13.0.3":
   version: 13.0.3
   resolution: "code-block-writer@npm:13.0.3"
@@ -6254,16 +6263,19 @@ __metadata:
     "@types/react-dom": "npm:^19"
     class-variance-authority: "npm:^0.7.1"
     clsx: "npm:^2.1.1"
+    cn: "npm:^0.2.5"
     embla-carousel-react: "npm:^8.6.0"
     eslint: "npm:^9"
     eslint-config-next: "npm:16.1.4"
     lucide-react: "npm:^0.563.0"
     next: "npm:^16.1.5"
+    next-themes: "npm:^0.4.6"
     radix-ui: "npm:^1.4.3"
     react: "npm:19.2.3"
     react-dom: "npm:19.2.3"
     react-hook-form: "npm:^7.71.1"
     shadcn: "npm:^3.7.0"
+    sonner: "npm:^2.0.8"
     tailwind-merge: "npm:^3.4.0"
     tailwindcss: "npm:^4"
     tw-animate-css: "npm:^1.4.0"
@@ -6301,6 +6313,16 @@ __metadata:
   version: 1.0.0
   resolution: "negotiator@npm:1.0.0"
   checksum: 10c0/4c559dd52669ea48e1914f9d634227c561221dd54734070791f999c52ed0ff36e437b2e07d5c1f6e32909fc625fe46491c16e4a8f0572567d4dd15c3a4fda04b
+  languageName: node
+  linkType: hard
+
+"next-themes@npm:^0.4.6":
+  version: 0.4.6
+  resolution: "next-themes@npm:0.4.6"
+  peerDependencies:
+    react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+    react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+  checksum: 10c0/83590c11d359ce7e4ced14f6ea9dd7a691d5ce6843fe2dc520fc27e29ae1c535118478d03e7f172609c41b1ef1b8da6b8dd2d2acd6cd79cac1abbdbd5b99f2c4
   languageName: node
   linkType: hard
 
@@ -7553,6 +7575,20 @@ __metadata:
   version: 1.0.5
   resolution: "sisteransi@npm:1.0.5"
   checksum: 10c0/230ac975cca485b7f6fe2b96a711aa62a6a26ead3e6fb8ba17c5a00d61b8bed0d7adc21f5626b70d7c33c62ff4e63933017a6462942c719d1980bb0b1207ad46
+  languageName: node
+  linkType: hard
+
+"sonner@npm:^2.0.8":
+  version: 2.0.8
+  resolution: "sonner@npm:2.0.8"
+  peerDependencies:
+    "@types/react": ^18.0.0 || ^19.0.0
+    react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+    react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/cc271f78dca7e7d7ce34a724883f3292ba671b5ed3d41732430df28c38a8f6a47e8e59da5fdd0b258ac07136db0cdaf02f8cda9afb9cc9f12d81b6c319b427f7
   languageName: node
   linkType: hard
 

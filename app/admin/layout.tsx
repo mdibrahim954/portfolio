@@ -1,14 +1,28 @@
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono , Inter} from "next/font/google";
-import "../../app/globals.css";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
+// @ts-ignore: side-effect import of CSS (no type declarations)
+import "../globals.css";
 
-import "@fortawesome/fontawesome-svg-core/styles.css";
+// import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-      import { BadgeCheckIcon, ChevronRightIcon , Mail , Newspaper , Blocks , TextWrap , Settings} from "lucide-react"
+import {
+  BadgeCheckIcon,
+  ChevronRightIcon,
+  BarChart,
+  Grid,
+  Mail,
+  Newspaper,
+  Blocks,
+  TextWrap,
+  Settings,
+  Grid2X2CheckIcon,
+  Grid3x2Icon,
+  Grid3x3Icon,
+  GridIcon,
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Item,
   ItemActions,
@@ -16,7 +30,14 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/components/ui/item"
+} from "@/components/ui/item";
+// import { useState } from "react";
+
+import AdminFooterUserSection, {
+  AdminHeader,
+  HeaderUserNavigation,
+} from "@/components/module/userNavigationHandler";
+import DasboardNavigation from "@/components/module/dashboardNavigation";
 
 // import { useRouter } from "next/router";
 const geistSans = Geist({
@@ -44,22 +65,30 @@ export default function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-//  const router = useRouter()
-  
-  return (
-    <main className={`flex h-[100vh]  ${geistSans.variable} ${geistMono.variable} antialiased`}>
-     
-        {
-            // sidebar
-        }
-        <div className={`w-[25%] px-[15px] pt-[25px] bg-black h-[100%]`} >
-          <div>
-          <h2 className={`text-3xl text-white font-bold ${getInter.className} uppercase  `}>Admin Console</h2>
-          <p className={`text-lg text-white ${getInter.className} font-normal`} >System root</p>
-          </div>
-          
+  //  const router = useRouter()
 
-            {/* <div className={`flex items-center mb-[30px]`}>
+  let activeMenu = false;
+
+  return (
+    <main
+      className={`flex h-[100vh]  ${geistSans.variable} ${geistMono.variable} antialiased`}
+    >
+      {
+        // sidebar
+      }
+      <div className={`w-[25%] px-[15px] pt-[25px] bg-black h-[100%] relative`}>
+        <div>
+          <h2
+            className={`text-3xl text-white font-bold ${getInter.className} uppercase  `}
+          >
+            Admin Console
+          </h2>
+          <p className={`text-lg text-white ${getInter.className} font-normal`}>
+            System root
+          </p>
+        </div>
+
+        {/* <div className={`flex items-center mb-[30px]`}>
                 <Avatar className="w-[70px] h-[70px] mr-[10px]">
                     <AvatarImage
                     src="https://github.com/shadcn.png"
@@ -76,88 +105,106 @@ export default function DashboardLayout({
                     </div>
                 </div>
             </div> */}
-  
 
-
-    <div className="flex w-full max-w-md flex-col mt-4 gap-1">
-      <Item className={`bg-transparent text-black hover:!text-black bg-[#dfe4ea] hover:!bg-[#dfe4ea] rounded-full`} variant="default" size="sm" asChild>
-        <a href="#">
-          <ItemMedia>
-            <Mail className="size-5" />
-          </ItemMedia>
-          <ItemContent>
-            <ItemTitle>Message</ItemTitle>
-          </ItemContent>
-          <ItemActions>
-            <ChevronRightIcon className="size-4" />
-          </ItemActions>
-        </a>
-      </Item>
-      <Item className={`bg-transparent text-white hover:!text-black hover:!bg-[#dfe4ea] rounded-full`} variant="default" size="sm" asChild>
-        <a href="#">
-          <ItemMedia>
-            <Newspaper className="size-5" />
-          </ItemMedia>
-          <ItemContent>
-            <ItemTitle>Subscribers</ItemTitle>
-          </ItemContent>
-          <ItemActions>
-            <ChevronRightIcon className="size-4" />
-          </ItemActions>
-        </a>
-      </Item>
-      <Item className={`bg-transparent text-white hover:!text-black hover:!bg-[#dfe4ea] rounded-full`} variant="default" size="sm" asChild>
-        <a href="#">
-          <ItemMedia>
-            <Blocks className="size-5" />
-          </ItemMedia>
-          <ItemContent>
-            <ItemTitle>Post</ItemTitle>
-          </ItemContent>
-          <ItemActions>
-            <ChevronRightIcon className="size-4" />
-          </ItemActions>
-        </a>
-      </Item>
-      <Item className={`bg-transparent text-white hover:!text-black hover:!bg-[#dfe4ea] rounded-full`} variant="default" size="sm" asChild>
-        <a href="#">
-          <ItemMedia>
-            <TextWrap className="size-5" />
-          </ItemMedia>
-          <ItemContent>
-            <ItemTitle>Content</ItemTitle>
-          </ItemContent>
-          <ItemActions>
-            <ChevronRightIcon className="size-4" />
-          </ItemActions>
-        </a>
-      </Item>
-      <Item className={`bg-transparent text-white hover:!text-black hover:!bg-[#dfe4ea] rounded-full`} variant="default" size="sm" asChild>
-        <a href="#">
-          <ItemMedia>
-            <Settings className="size-5" />
-          </ItemMedia>
-          <ItemContent>
-            <ItemTitle>Settings</ItemTitle>
-          </ItemContent>
-          <ItemActions>
-            <ChevronRightIcon className="size-4" />
-          </ItemActions>
-        </a>
-      </Item>
-    </div>
-
+        <div className="flex w-full max-w-md flex-col mt-4 gap-1">
+          {/* <Item
+            className={`bg-transparent text-black hover:!text-black bg-[#dfe4ea] hover:!bg-[#dfe4ea] rounded-full`}
+            variant="default"
+            size="sm"
+            asChild
+          >
+            <a href="#">
+              <ItemMedia>
+                <Mail className="size-5" />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Message</ItemTitle>
+              </ItemContent>
+              <ItemActions>
+                <ChevronRightIcon className="size-4" />
+              </ItemActions>
+            </a>
+          </Item>
+          <Item
+            className={`bg-transparent text-white hover:!text-black hover:!bg-[#dfe4ea] rounded-full`}
+            variant="default"
+            size="sm"
+            asChild
+          >
+            <a href="#">
+              <ItemMedia>
+                <Newspaper className="size-5" />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Subscribers</ItemTitle>
+              </ItemContent>
+              <ItemActions>
+                <ChevronRightIcon className="size-4" />
+              </ItemActions>
+            </a>
+          </Item>
+          <Item
+            className={`bg-transparent text-white hover:!text-black hover:!bg-[#dfe4ea] rounded-full`}
+            variant="default"
+            size="sm"
+            asChild
+          >
+            <a href="#">
+              <ItemMedia>
+                <Blocks className="size-5" />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Post</ItemTitle>
+              </ItemContent>
+              <ItemActions>
+                <ChevronRightIcon className="size-4" />
+              </ItemActions>
+            </a>
+          </Item>
+          <Item
+            className={`bg-transparent text-white hover:!text-black hover:!bg-[#dfe4ea] rounded-full`}
+            variant="default"
+            size="sm"
+            asChild
+          >
+            <a href="#">
+              <ItemMedia>
+                <TextWrap className="size-5" />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Content</ItemTitle>
+              </ItemContent>
+              <ItemActions>
+                <ChevronRightIcon className="size-4" />
+              </ItemActions>
+            </a>
+          </Item>
+          <Item
+            className={`bg-transparent text-white hover:!text-black hover:!bg-[#dfe4ea] rounded-full`}
+            variant="default"
+            size="sm"
+            asChild
+          >
+            <a href="#">
+              <ItemMedia>
+                <Settings className="size-5" />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>Settings</ItemTitle>
+              </ItemContent>
+              <ItemActions>
+                <ChevronRightIcon className="size-4" />
+              </ItemActions>
+            </a>
+          </Item> */}
+          <DasboardNavigation />
+          {<AdminFooterUserSection />}
         </div>
-        <div className={`w-[75%] h-[100%]`} >
-          <div className={`p-[15px] w-full bg-[#f1f2f6] `}>
-              <h1 className={`text-3xl font-bold `}>Dashboard</h1>
-            </div>
-            <div className={`p-[15px] w-full  `}>
-              {children}
-            </div>
-          
-          </div>
-      
+      </div>
+      <div className={`w-[75%] h-[100%] relative`}>
+        <AdminHeader />
+        <div className={`p-[25px] w-full  `}>{children}</div>
+      </div>
     </main>
   );
 }
