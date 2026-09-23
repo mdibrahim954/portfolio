@@ -1,315 +1,180 @@
 "use client";
-import {
-  deviceScreens,
-  HeroLinerEffact,
-  PingPoppingEffect,
-} from "@/lib/module";
+
 import { container } from "@/lib/settings";
 import { Inter, IBM_Plex_Sans } from "next/font/google";
 import Image from "next/image";
-import { useState, useRef, useEffect, use, JSX } from "react";
-import { set } from "zod";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
-const getInter = Inter({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
+
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   variable: "--font-ibm-plex-sans",
   weight: ["400", "500", "600", "700"],
 });
 
-const heroData = {
-  name: "Md Ibrahim",
-  nickname: "Naim Bhuiya",
-  description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus cumque ut quos explicabo magni consequuntur recusandae, repellat cupiditate architecto error unde nihil porro pariatur qui quidem dignissimos sunt sint obcaecati est eligendi nostrum? Dolorem praesentium consequuntur at illum enim deserunt!",
-  moreInfo: {
-    title: "More Info",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus cumque ut quos explicabo magni consequuntur recusandae, repellat cupiditate architecto error unde nihil porro pariatur qui quidem dignissimos sunt sint obcaecati est eligendi nostrum? Dolorem praesentium consequuntur at illum enim deserunt!",
-  },
-  callToAction: "Call to Action",
-  stats: [
-    { label: "Job Complete", value: "100+" },
-    { label: "Success Rate", value: "99%" },
-  ],
-  skill: [
-    { name: "Web Desing", percentage: 90 },
-    { name: "JavaScript", percentage: 80 },
-    { name: "React", percentage: 75 },
-    { name: "Node.js", percentage: 70 },
-    { name: "TypeScript", percentage: 65 },
-    { name: "Next.js", percentage: 60 },
-    { name: "Tailwind CSS", percentage: 55 },
-  ],
-};
+const tags = ["WordPress", "Shopify", "Next.js", "React", "AI Apps"];
 
-export const PipeLine = ({ width }: { width?: number }) => {
-  return (
-    <div
-      style={{
-        width: width + "px",
-      }}
-      className={`block h-[3px] bg-[#60a5fa] mt-[10px] relative mx-auto`}
-    >
-      <div
-        className={`absolute -left-[20px] w-[20px] h-[20px] customGradiantStyle -top-[10px] rounded-full`}
-      >
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#60a5fa] opacity-75 [animation-duration:3000ms] ease-in-out"></span>
-      </div>
-      <div
-        className={`absolute -right-[20px] w-[20px] h-[20px] customGradiantStyle -top-[10px] rounded-full`}
-      >
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#60a5fa] opacity-75 [animation-duration:3000ms] ease-in-out"></span>
-      </div>
-    </div>
-  );
-};
-
-export function BasicInfo() {
-  let boxRef = useRef<HTMLDivElement>(null);
-  let titleRef = useRef<HTMLHeadingElement>(null);
-  let [boxTotalWidth, setBoxTotalWidth] = useState<number>(0);
-  let [boxHeigth, setBoxHeigth] = useState<number>(0);
-  let [titleWidth, setTitleWidth] = useState<number>(0);
-  useEffect(() => {
-    const updateWidth = () => {
-      if (boxRef.current) {
-        setBoxTotalWidth(boxRef.current.offsetWidth);
-        setBoxHeigth(boxRef.current.offsetHeight);
-      }
-
-      if (titleRef.current) {
-        setTitleWidth(titleRef.current.offsetWidth);
-      }
-    };
-
-    updateWidth(); // initial
-    window.addEventListener("resize", updateWidth);
-
-    return () => window.removeEventListener("resize", updateWidth);
-  }, []);
-  let bubbleBox: number =
-    typeof boxTotalWidth === "number" &&
-    typeof titleWidth === "number" &&
-    titleWidth &&
-    boxTotalWidth
-      ? boxTotalWidth - titleWidth - 10
-      : 120;
-  let fBoxHeigth: number =
-    typeof boxHeigth === "number" ? boxHeigth * (1 - 0.4) : 120;
-  return (
-    <div className={`relative pr-[10px]`} ref={boxRef}>
-      <Tabs defaultValue="ctr-name" className="w-[400px]">
-        <TabsList
-          ref={titleRef}
-          className="bg-transparent border-b-2 border-l-2 border-[#60a5fa]  w-max mb-[5px]"
-        >
-          <TabsTrigger
-            className={`backdrop-blur-lg p-[5px] text-white hover:text-white/90 cursor-pointer`}
-            value="ctr-name"
-          >
-            Certificate Name
-          </TabsTrigger>
-          <TabsTrigger
-            className={`backdrop-blur-lg p-[5px] text-white hover:text-white/90 cursor-pointer`}
-            value="nickname"
-          >
-            Nickname
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="ctr-name">
-          <h4
-            className={` text-3xl text-[#F8FAFC] font-medium inline ${getInter.className}`}
-          >
-            {heroData.name}
-          </h4>
-        </TabsContent>
-        <TabsContent value="nickname">
-          <h4
-            className={` text-3xl text-[#F8FAFC] font-medium inline ${getInter.className}`}
-          >
-            {heroData.nickname}
-          </h4>
-        </TabsContent>
-      </Tabs>
-
-      <p className={`${ibmPlexSans.className} text-[#F8FAFC]`}>
-        {heroData.description}
-      </p>
-      <button
-        className={`p-2 rounded-[8px] mt-[10px] bg-[#000] text-[#fff] ${ibmPlexSans.className} cursor-pointer`}
-      >
-        {heroData.callToAction}
-      </button>
-
-      <HeroLinerEffact
-        cW={boxTotalWidth - titleWidth}
-        cH={boxHeigth / 2}
-        borderTWClass={`border-t-[2px] border-e-[2px] border-[#60a5fa] rounded-tr-lg rounded-tl-lg`}
-      />
-    </div>
-  );
-}
-export function MoreInfo() {
-  return (
-    <div className={`relative`}>
-      <h4
-        className={`text-3xl text-[#F8FAFC] font-medium inline ${getInter.className}`}
-      >
-        {heroData.moreInfo.title}
-      </h4>
-      <p className={`${ibmPlexSans.className} text-[#F8FAFC]`}>
-        {heroData.moreInfo.description}
-      </p>
-      <PipeLine />
-      <div className={`flex mt-[10px]`}>
-        <div className={`w-1/2`}>
-          <h4
-            className={`text-2xl font-medium ${getInter.className} text-[#F8FAFC]`}
-          >
-            {heroData.stats[0].value}
-          </h4>
-          <p
-            className={`text-sm font-medium ${getInter.className} text-[#F8FAFC]`}
-          >
-            {heroData.stats[0].label}
-          </p>
-        </div>
-        <div className={`w-1/2 `}>
-          <h4
-            className={`text-2xl font-medium ${getInter.className} text-[#F8FAFC]`}
-          >
-            {heroData.stats[1].value}
-          </h4>
-          <p
-            className={`text-sm font-medium ${getInter.className} text-[#F8FAFC]`}
-          >
-            {heroData.stats[1].label}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const skills = heroData.skill;
-
-export function DesktopComponents() {
-  const [changeTitle, setChangeTitle] = useState<string>("Web Developer");
-  let count = 0;
-  setTimeout(() => {
-    count++;
-    let itemIndex = skills.length !== count ? count : 0;
-    setChangeTitle(skills[itemIndex].name);
-    console.log(skills[itemIndex].name);
-  }, 2000);
-  return (
-    <div className={`customGradiantStyle overflow-hidden`}>
-      <div className={container + " " + "pt-[150px] mx-auto relative"}>
-        <PingPoppingEffect />
-
-        <h3
-          className={`text-[120px] text-center font-bold iuxtxt ${getInter.className}`}
-        >
-          {changeTitle}
-        </h3>
-        <div className={`flex gap-4`}>
-          <div className={`w-2/7 flex items-center `}>
-            <BasicInfo />
-          </div>
-          <div className={`w-3/7 flex justify-center relative`}>
-            <Image
-              className={`-mt-[180px] w-[80%] z-3`}
-              src={`/man.png`}
-              width={800}
-              height={800}
-              alt=""
-            />
-          </div>
-          <div className={`w-2/7 flex items-center`}>
-            <MoreInfo />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 export default function Hero() {
-  const [changeTitle, setChangeTitle] = useState("Web Developer");
-  const [count, setCount] = useState(0);
-
-  // 🔹 Change title every 3s
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prev) => {
-        const nextIndex = prev + 1 === skills.length ? 0 : prev + 1;
-        setChangeTitle(skills[nextIndex].name);
-        return nextIndex;
-      });
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // 🔹 Typing effect
-  const [displayText, setDisplayText] = useState("");
-
-  useEffect(() => {
-    let currentIndex = 0;
-    setDisplayText("");
-
-    const typingInterval = setInterval(() => {
-      setDisplayText((prev) => prev + changeTitle.charAt(currentIndex - 1));
-      currentIndex++;
-
-      if (currentIndex >= changeTitle.length) {
-        clearInterval(typingInterval);
-      }
-    }, 80); // typing speed
-
-    return () => clearInterval(typingInterval);
-  }, [changeTitle]);
-
   return (
-    <div className="customGradiantStyle overflow-hidden">
-      <div className={`${container} pt-[150px] mx-auto relative`}>
-        <PingPoppingEffect mainClassName="w-[50px] h-[50px] bottom-[50%] right-[5%]" />
-        <PingPoppingEffect mainClassName="w-[50px] h-[50px] top-[15%] right-[25%]" />
-        <PingPoppingEffect mainClassName="w-[50px] h-[50px] top-[15%] left-[5%]" />
-        <PingPoppingEffect mainClassName="w-[50px] h-[50px] bottom-[50%] left-[25%]" />
+    <section className="relative overflow-hidden border-b border-slate-200 bg-[#f8fafc]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.06),_transparent_38%)]" />
 
-        {/* 🔹 Typed Heading */}
-        <h3
-          className={`text-[120px] text-center font-bold iuxtxt ${getInter.className} w-full`}
-        >
-          {displayText}
-          <span className="animate-pulse">/</span>
-        </h3>
+      <div
+        className={`${container} relative mx-auto grid items-center gap-10 py-16 sm:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:py-24`}
+      >
+        <div className="order-2 w-full max-w-xl lg:order-1">
+          <p
+            className={`mb-4 text-[11px] font-semibold tracking-[0.22em] text-slate-600 uppercase ${ibmPlexSans.className}`}
+          >
+            Web Designer & Developer
+          </p>
 
-        <div className="flex gap-4">
-          <div className="w-2/7 flex items-center">
-            <BasicInfo />
+          <h1
+            className={`${inter.className} text-4xl font-semibold leading-[1.04] tracking-[-0.06em] text-slate-900 sm:text-5xl lg:text-[4rem]`}
+          >
+            I Build Fast Websites That Help Businesses Grow.
+          </h1>
+
+          <p
+            className={`mt-5 max-w-lg text-base leading-7 text-slate-600 sm:text-lg ${ibmPlexSans.className}`}
+          >
+            I design and develop modern websites, e-commerce stores, and web
+            apps focused on performance, usability, and business results.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#projects"
+              className={`inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800 ${ibmPlexSans.className}`}
+            >
+              View My Work
+            </a>
+            <a
+              href="#contact"
+              className={`inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-900 transition hover:border-slate-400 hover:bg-slate-50 ${ibmPlexSans.className}`}
+            >
+              Let&apos;s Work Together
+            </a>
           </div>
 
-          <div className="w-3/7 flex justify-center relative">
-            <Image
-              className="-mt-[180px] w-[80%] z-3"
-              src="/man.png"
-              width={800}
-              height={800}
-              alt=""
-            />
+          <div className="mt-8 flex flex-wrap items-center gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[10px] font-medium tracking-[0.1em] text-slate-600 uppercase"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
+        </div>
 
-          <div className="w-2/7 flex items-center">
-            <MoreInfo />
+        <div className="order-1 flex justify-center lg:order-2">
+          <div className="relative w-full max-w-[520px]">
+            <div className="absolute -left-4 top-8 h-24 w-24 rounded-full bg-blue-100 blur-3xl" />
+            <div className="absolute -right-6 bottom-8 h-24 w-24 rounded-full bg-slate-200 blur-3xl" />
+
+            <div className="relative rounded-[28px] border border-slate-200 bg-white p-3 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-4">
+              <div className="mb-4 flex items-center gap-2 pl-1">
+                <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-[1.35fr_0.65fr]">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <Image
+                    className={`w-full h-full object-cover rounded-[10px]`}
+                    src="/man.jpg"
+                    width={600}
+                    height={400}
+                    alt=""
+                  />
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <div className="rounded-2xl border border-slate-200 bg-white p-3">
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                      Speed
+                    </p>
+                    <p className="mt-2 text-2xl font-semibold text-slate-900">
+                      98%
+                    </p>
+                    <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                      <div className="h-full w-[98%] rounded-full bg-blue-600" />
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200 bg-slate-900 p-3 text-white">
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-slate-300">
+                      Stack
+                    </p>
+                    <div className="mt-3 space-y-2 text-sm text-slate-200">
+                      <div className="flex items-center justify-between">
+                        <span>WordPress</span>
+                        <span>•</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Shopify</span>
+                        <span>•</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Javascript</span>
+                        <span>•</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>React</span>
+                        <span>•</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Node Js</span>
+                        <span>•</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Next.js</span>
+                        <span>•</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Express js</span>
+                        <span>•</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>PHP</span>
+                        <span>•</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div className="flex items-center justify-between gap-3 text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                  <span>Web Performance</span>
+                  <span>Core Web Vitals</span>
+                </div>
+
+                <div className="mt-3 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
+                    <div className="h-2 w-full rounded-full bg-slate-200">
+                      <div className="h-full w-[86%] rounded-full bg-blue-600" />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-slate-900" />
+                    <div className="h-2 w-full rounded-full bg-slate-200">
+                      <div className="h-full w-[92%] rounded-full bg-slate-900" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

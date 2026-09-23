@@ -1,46 +1,30 @@
 "use client";
-import {
-  buttonStyle,
-  container,
-  gradiantSection,
-  section,
-} from "@/lib/settings";
-import { IBM_Plex_Sans, Inter, Roboto } from "next/font/google";
-import { PipeLine } from "./hero";
-import { JSX, useEffect, useRef, useState } from "react";
 
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Image from "next/image";
-
+import { buttonStyle, container, gradiantSection } from "@/lib/settings";
+import { IBM_Plex_Sans, Inter } from "next/font/google";
 import Link from "next/link";
 
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/badge";
 
 const getInter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
+
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   variable: "--font-ibm-plex-sans",
   weight: ["400", "500", "600", "700"],
 });
 
-interface servicesIterface {
-  icon: string | JSX.Element;
+interface ServiceItem {
+  icon: string;
   title: string;
   desc: string;
 }
 
-export const services: servicesIterface[] = [
+export const services: ServiceItem[] = [
   {
     icon: "💻",
     title: "Website Development",
@@ -94,65 +78,71 @@ export const services: servicesIterface[] = [
 ];
 
 export function Services() {
-  const cardStyle = `w-[calc(25%-20px)] p-[10px] rounded-[15px] bg-[#ffffff12] backdrop-blur-lg`;
-  const cardTitle = `${ibmPlexSans.className} font-medium text-lg text-[#fff]`;
-  const cardParaGrap = `${ibmPlexSans.className} font-normal text-sm text-[#fff] text-center `;
-
   return (
-    <div className={`${gradiantSection}`}>
-      <div className={`block ${container} `}>
-        {/* Title */}
-        <div className={``}>
-          <div className={`flex flex-wrap justify-center`}>
-            <h3
-              className={`text-center text-[#fff] inline mx-auto text-[30px] font-medium ${getInter.className}`}
-            >
-              {`Web Development Services Offered`}
-            </h3>
-          </div>
+    <section className={`${gradiantSection} bg-[#f8fafc]`}>
+      <div className={`${container} mx-auto`}>
+        <div className="mx-auto max-w-3xl text-center">
           <p
-            className={`w-1/2 mx-auto text-center text-[#fff] ${ibmPlexSans.className}`}
+            className={`mb-4 text-[11px] font-semibold tracking-[0.18em] text-slate-600 uppercase ${ibmPlexSans.className}`}
           >
-            {`Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
-            nihil praesentium voluptate id reiciendis? Obcaecati, quam quasi?
-            Voluptatum, modi ducimus?`}
+            Services
+          </p>
+          <h3
+            className={`${getInter.className} text-3xl font-semibold tracking-[-0.05em] text-slate-900 sm:text-4xl`}
+          >
+            Web Development Services Offered
+          </h3>
+          <p
+            className={`${ibmPlexSans.className} mt-4 text-base leading-7 text-slate-600 sm:text-lg`}
+          >
+            Practical solutions for businesses that need reliable, modern
+            digital experiences.
           </p>
         </div>
-        <div className={`flex flex-wrap justify-center gap-[20px] mt-[30px]`}>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {services.map((service, index) => (
             <Card
               key={index}
               className={cn(
-                cardStyle,
-                ` gap-1 border-[0px] p-0 px-[10px] py-[10px]`
+                "group border border-slate-200 bg-white p-0 shadow-[0_12px_32px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_20px_45px_rgba(15,23,42,0.08)]",
+                "rounded-[22px]"
               )}
             >
-              <CardHeader className={`p-0 `}>
-                {typeof service.icon === "string" ? (
-                  <p className={`text-center text-[30px]`}>{service.icon}</p>
-                ) : (
-                  service.icon
-                )}
+              <CardHeader className="p-5 pb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-2xl shadow-sm">
+                  {service.icon}
+                </div>
               </CardHeader>
-              <CardContent className={`px-[0px]`}>
-                <CardTitle className={cardTitle + ` text-center gap-2`}>
+
+              <CardContent className="px-5 pb-5">
+                <CardTitle
+                  className={`${ibmPlexSans.className} text-lg font-semibold text-slate-900`}
+                >
                   {service.title}
                 </CardTitle>
-                <p className={cardParaGrap}>{service.desc}</p>
+                <p
+                  className={`${ibmPlexSans.className} mt-3 text-sm leading-6 text-slate-600`}
+                >
+                  {service.desc}
+                </p>
               </CardContent>
             </Card>
           ))}
         </div>
-        <div className={`mt-[40px] text-center`}>
+
+        <div className="mt-10 text-center">
           <Link
+            href="#contact"
             className={cn(
               buttonStyle,
-              " mx-auto inline-block px-[20px] py-[10px] rounded-full"
+              "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5"
             )}
-            href={"#contact"}
-          >{`Support anytime — 24 hours a day, 7 days a week`}</Link>
+          >
+            Support anytime — 24 hours a day, 7 days a week
+          </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

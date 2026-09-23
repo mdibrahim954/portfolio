@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./../globals.css";
@@ -29,8 +28,8 @@ export default function MainLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-//  const router = useRouter()
-  
+  //  const router = useRouter()
+
   return (
     <html lang="en">
       <body
@@ -39,7 +38,7 @@ export default function MainLayout({
         {
           // router.pathname === "/admin" ? null : (<><TopBar />  <Header /></>)
         }
-        <TopBar />
+
         <Header />
         {children}
         {

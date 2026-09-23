@@ -9,9 +9,9 @@ const ibmPlexSans = IBM_Plex_Sans({
   variable: "--font-ibm-plex-sans",
   weight: ["400", "500", "600", "700"],
 });
-export const section = `py-[100px]`;
-export const gradiantSection = `customGradiantStyle ${section}`;
-export const container = `w-3/4 mx-auto `;
+export const section = `py-[50px] md:py-[100px]`;
+export const gradiantSection = `bg-[#FAFBFE] ${section}`;
+export const container = `w-full md:w-3/4 mx-auto  relative mx-auto  max-w-[1180px] gap-7 md:gap-14 px-6 `;
 export const gradiantContainer = `${container} customGradiantStyle`;
 export const buttonStyle = `${ibmPlexSans.className} px-[20px] py-[10px] rounded-[5px] bg-[#000] text-[#fff] hover:bg-[#333] transition-all duration-300 ease-in-out`;
 export const personalInformation = {

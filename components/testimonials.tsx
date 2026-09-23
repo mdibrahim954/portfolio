@@ -6,7 +6,7 @@ import {
   section,
 } from "@/lib/settings";
 import { IBM_Plex_Sans, Inter } from "next/font/google";
-import { PipeLine } from "./hero";
+// import { PipeLine } from "./hero";
 import { JSX, useEffect, useRef, useState } from "react";
 
 import {
@@ -104,9 +104,9 @@ export const services: servicesIterface[] = [
 ];
 
 export function Testimonials() {
-  const cardStyle = `w-[100%] p-[10px] rounded-[10px] bg-[#ffffff12] backdrop-blur-lg`;
-  const cardTitle = `${ibmPlexSans.className} font-medium text-lg text-[#fff]`;
-  const cardParaGrap = `${ibmPlexSans.className} font-normal text-sm text-[#fff] text-center `;
+  const cardStyle = `w-[100%] p-[10px] rounded-[10px] bg-[#60a5fa12] backdrop-blur-lg`;
+  const cardTitle = `${ibmPlexSans.className} font-medium text-lg text-[#000]`;
+  const cardParaGrap = `${ibmPlexSans.className} font-normal text-sm text-[#000] text-center `;
 
   return (
     <div className={`${gradiantSection}`}>
@@ -115,13 +115,13 @@ export function Testimonials() {
         <div className={``}>
           <div className={`flex flex-wrap justify-center`}>
             <h3
-              className={`text-center text-[#fff] inline mx-auto text-[30px] font-medium ${getInter.className}`}
+              className={`text-center text-[#000] inline mx-auto text-[30px] font-medium ${getInter.className}`}
             >
               {`Reviews & Testimonials`}
             </h3>
           </div>
           <p
-            className={`w-1/2 mx-auto text-center text-[#fff] ${ibmPlexSans.className}`}
+            className={`w-1/2 mx-auto text-center text-[#000] ${ibmPlexSans.className}`}
           >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
             nihil praesentium voluptate id reiciendis? Obcaecati, quam quasi?
