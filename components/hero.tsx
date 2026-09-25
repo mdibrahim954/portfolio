@@ -1,18 +1,12 @@
 "use client";
 
-import { container } from "@/lib/settings";
+import { container, ibmPlexSans } from "@/lib/settings";
 import { Inter, IBM_Plex_Sans } from "next/font/google";
 import Image from "next/image";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-sans",
-  weight: ["400", "500", "600", "700"],
 });
 
 const tags = ["WordPress", "Shopify", "Next.js", "React", "AI Apps"];
@@ -23,7 +17,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.06),_transparent_38%)]" />
 
       <div
-        className={`${container} relative mx-auto grid items-center gap-10 py-16 sm:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:py-24`}
+        className={`${container} relative mx-auto grid items-center gap-10 pt-[100px] pb-16 sm:pt-[110px] sm:pb-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:pt-[150px] lg:pb-24`}
       >
         <div className="order-2 w-full max-w-xl lg:order-1">
           <p

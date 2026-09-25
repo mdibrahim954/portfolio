@@ -1,4 +1,4 @@
-import { container, section } from "@/lib/settings";
+import { container, info, section } from "@/lib/settings";
 import {
   faArrowRight,
   faEnvelope,
@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IBM_Plex_Sans, Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import GroupOfAction from "./module/groupOfAction";
+import ImageCollage from "./module/imageCollage";
 
 const getInter = Inter({
   subsets: ["latin"],
@@ -89,86 +91,10 @@ export default function AboutMe() {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Link
-                href="#contact"
-                className={`${ibmPlexSans.className} inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800`}
-              >
-                Let&apos;s Talk
-              </Link>
-
-              <Link
-                href="https://wa.me/+8801815936851"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition hover:text-slate-900"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700">
-                  <FontAwesomeIcon icon={faMessage} />
-                </span>
-                WhatsApp
-              </Link>
-
-              <Link
-                href="mailto:naimbhuiya@gmail.com"
-                className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition hover:text-slate-900"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700">
-                  <FontAwesomeIcon icon={faEnvelope} />
-                </span>
-                Email
-              </Link>
-            </div>
+            <GroupOfAction />
           </div>
 
-          <div className="order-1 w-full lg:order-2">
-            <div className="grid grid-cols-[0.9fr_1.1fr_0.9fr] gap-3 sm:gap-4">
-              <div className="flex flex-col gap-3 sm:gap-4">
-                <div className="overflow-hidden rounded-[20px] border border-slate-200 bg-white p-2 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
-                  <Image
-                    src="/1.webp"
-                    width={600}
-                    height={700}
-                    alt="Portfolio work sample"
-                    className="h-[180px] w-full rounded-[16px] object-cover sm:h-[220px] lg:h-[260px]"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:gap-4">
-                <div className="overflow-hidden rounded-[20px] border border-slate-200 bg-white p-2 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
-                  <Image
-                    src="/3.jpg"
-                    width={600}
-                    height={700}
-                    alt="Website project preview"
-                    className="h-[140px] w-full rounded-[16px] object-cover sm:h-[180px] lg:h-[220px]"
-                  />
-                </div>
-                <div className="overflow-hidden rounded-[20px] border border-slate-200 bg-white p-2 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
-                  <Image
-                    src="/4.webp"
-                    width={600}
-                    height={700}
-                    alt="Design project preview"
-                    className="h-[140px] w-full rounded-[16px] object-cover sm:h-[180px] lg:h-[220px]"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:gap-4">
-                <div className="overflow-hidden rounded-[20px] border border-slate-200 bg-white p-2 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
-                  <Image
-                    src="/2.jpg"
-                    width={600}
-                    height={700}
-                    alt="Brand and UI project preview"
-                    className="h-[180px] w-full rounded-[16px] object-cover sm:h-[220px] lg:h-[260px]"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+          <ImageCollage className="order-1 lg:order-2" />
         </div>
       </div>
     </section>

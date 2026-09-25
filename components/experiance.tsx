@@ -9,188 +9,78 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IBM_Plex_Sans, Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import GroupOfAction from "./module/groupOfAction";
+import ImageCollage from "./module/imageCollage";
+
 const getInter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
+
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   variable: "--font-ibm-plex-sans",
   weight: ["400", "500", "600", "700"],
 });
 
+const experiencePoints = [
+  "Product strategy and execution across web experiences",
+  "Design systems thinking with measurable user impact",
+  "Cross-functional collaboration with engineering and product teams",
+  "Clear communication from concept through launch",
+  "Experience design grounded in real business outcomes",
+  "A process that balances speed, quality, and scalability",
+];
+
 export default function Experiance() {
-  const cardStyle = `w-[calc(50%-20px)] border-[1px] border-[#E2E8F0] p-[10px] rounded-[10px]  block relative shadow-sm`;
-  const listClass = `${ibmPlexSans.className} text-[#000] text-md flex flex-row gap-[10px]`;
   return (
-    <div className={`${section}`}>
+    <section className={`${section} bg-[#f8fafc]`}>
       <div className={`${container}`}>
-        <div className={`flex gap-[20px]`}>
-          <div className={`w-[calc(50%-20px)] flex gap-[10px] items-center`}>
-            <Image
-              className={`w-[calc(33.33%-10px)] h-[400px] object-cover rounded-[10px]`}
-              src="/1.webp"
-              width={600}
-              height={400}
-              alt=""
-            />
-            <div className={`w-[calc(33.33%-20px)]  gap-[10px] flex flex-col`}>
-              <Image
-                className={`h-[250px] object-cover rounded-[10px]`}
-                src="/3.jpg"
-                width={600}
-                height={400}
-                alt=""
-              />
-              <Image
-                className={`h-[250px] object-cover rounded-[10px]`}
-                src="/4.webp"
-                width={600}
-                height={400}
-                alt=""
-              />
+        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1.2fr] lg:gap-12">
+          <ImageCollage />
+
+          <div className="space-y-6">
+            <div className="inline-flex items-center rounded-full border border-[#dbeafe] bg-[#eff6ff] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-[#1d4ed8]">
+              Experience
             </div>
-            <Image
-              className={`w-[calc(33.33%-10px)] h-[400px] object-cover rounded-[10px]`}
-              src="/2.jpg"
-              width={600}
-              height={400}
-              alt=""
-            />
-          </div>
-          <div className={`w-[calc(50%-10px)]`}>
-            <div>
+
+            <div className="space-y-5">
               <h3
-                className={`text-3xl font-bold text-[#000] ${getInter.className} mt-[20px]`}
+                className={`text-3xl font-bold text-[#0f172a] sm:text-4xl ${getInter.className}`}
               >
-                {`Professional Experience`}
+                Professional Experience
               </h3>
-              <p className={`${ibmPlexSans.className} text-[#000] text-md`}>
+
+              <p
+                className={`${ibmPlexSans.className} text-base leading-8 text-slate-700`}
+              >
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
                 recusandae, beatae rem error sunt eos sit, vel veritatis
                 exercitationem accusantium atque, voluptas nulla nobis quasi
                 excepturi sed? Commodi, perspiciatis corporis vitae fuga
                 molestiae tempore ducimus unde, amet eaque dolores est modi
-                autem quas fugiat corrupti assumenda sequi, eligendi provident
-                tempora excepturi qui temporibus! Cumque officia et cum facilis.
-                Debitis fugiat similique excepturi ipsa expedita fuga iusto
-                fugit, ex sunt ratione veritatis temporibus odit eaque ullam
-                soluta provident atque? Tenetur, beatae!
+                autem quas fugiat corrupti assumenda sequi.
               </p>
-              <div className={`flex flex-row`}>
-                <ul
-                  className={` mt-[20px] list-disc list-inside ${ibmPlexSans.className} text-[#000]`}
-                >
-                  <li className={`${listClass}`}>
-                    <span>
-                      <FontAwesomeIcon icon={regularDot} />
-                    </span>
-                    <span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </li>
-                  <li className={`${listClass}`}>
-                    <span>
-                      <FontAwesomeIcon icon={regularDot} />
-                    </span>
-                    <span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </li>
-                  <li className={`${listClass}`}>
-                    <span>
-                      <FontAwesomeIcon icon={regularDot} />
-                    </span>
-                    <span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </li>
-                  <li className={`${listClass}`}>
-                    <span>
-                      <FontAwesomeIcon icon={regularDot} />
-                    </span>
-                    <span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </li>
-                </ul>
-                <ul
-                  className={` mt-[20px] list-disc list-inside ${ibmPlexSans.className} text-[#000]`}
-                >
-                  <li className={`${listClass}`}>
-                    <span>
-                      <FontAwesomeIcon icon={regularDot} />
-                    </span>
-                    <span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </li>
-                  <li className={`${listClass}`}>
-                    <span>
-                      <FontAwesomeIcon icon={regularDot} />
-                    </span>
-                    <span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </li>
-                  <li className={`${listClass}`}>
-                    <span>
-                      <FontAwesomeIcon icon={regularDot} />
-                    </span>
-                    <span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </li>
-                  <li className={`${listClass}`}>
-                    <span>
-                      <FontAwesomeIcon icon={regularDot} />
-                    </span>
-                    <span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div className={`mt-[30px]`}>
-                <ul className={` flex flex-wrap gap-[20px]`}>
-                  <li>
-                    <Link
-                      href={"#"}
-                      className={`p-2 rounded-[8px] mt-[10px] bg-[#000] text-[#fff] ${ibmPlexSans.className} cursor-pointer`}
-                    >
-                      Call to Action
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={"tel:+8801815936851"}>
-                      <span>
-                        <FontAwesomeIcon icon={faPhone} />
-                      </span>
-                      <span
-                        className={`ml-[10px] text-[#000] ${ibmPlexSans.className}`}
-                      >
-                        +8801815936851
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={"mailto:naimbhuiya@gmail.com"}>
-                      <span>
-                        <FontAwesomeIcon icon={faEnvelope} />
-                      </span>
-                      <span
-                        className={`ml-[10px] text-[#000] ${ibmPlexSans.className}`}
-                      >
-                        naimbhuiya@gmail.com
-                      </span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
             </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {experiencePoints.map((item) => (
+                <div
+                  key={item}
+                  className={`${ibmPlexSans.className} flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-3 text-sm leading-6 text-slate-700 shadow-sm`}
+                >
+                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#0f172a] text-[10px] text-white">
+                    <FontAwesomeIcon icon={regularDot} />
+                  </span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <GroupOfAction />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
