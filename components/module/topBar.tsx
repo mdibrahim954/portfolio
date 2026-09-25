@@ -1,4 +1,4 @@
-import { container, personalInformation } from "@/lib/settings";
+import { container, info } from "@/lib/settings";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import {
@@ -9,7 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
-const { phone, email, bEmail, location } = personalInformation;
+const { phone, email, bEmail, location } = info;
 export default function TopBar() {
   return (
     <div className={`bg-black `}>
