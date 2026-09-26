@@ -86,7 +86,7 @@ const cards: ProjectCard[] = [
 
 export function Projects() {
   return (
-    <section className={`${gradiantSection} bg-[#fff]`}>
+    <section id="project" className={`${gradiantSection} bg-[#fff]`}>
       <div className={`${container} mx-auto`}>
         <div className="mx-auto max-w-3xl text-center">
           <p

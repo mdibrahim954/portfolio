@@ -41,7 +41,7 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#projects"
+              href="#project"
               className={`inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800 ${ibmPlexSans.className}`}
             >
               View My Work

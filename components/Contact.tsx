@@ -52,6 +52,8 @@ export function ContactForm() {
 
   const onSubmit = (data: z.infer<typeof contactFormSchema>) => {
     console.log("Form Data:", data);
+    const { name, email, message, newsletter } = data;
+
     form.reset();
   };
 
@@ -178,6 +180,7 @@ export function ContactForm() {
 export default function ContactUs() {
   return (
     <div
+      id="contact"
       className={cn(
         section,
         "bg-[radial-gradient(circle_at_top,#f8fbff_0%,#eff6ff_45%,#f8fafc_100%)]"

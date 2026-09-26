@@ -28,8 +28,8 @@ export function Logo() {
 
 const navItems = [
   { label: "Home", href: "#" },
-  { label: "About", href: "#" },
-  { label: "Portfolio", href: "#" },
+  { label: "About", href: "#about" },
+  { label: "Portfolio", href: "#project" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -99,17 +99,19 @@ export function NavBar() {
 
 export function CallToAction() {
   return (
-    <button
+    <Link
+      href={`https://www.upwork.com/freelancers/~0163ebe10912bf9c44?mp_source=share`}
+      target="_blank"
       className={`rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700 ${getInter.className}`}
     >
-      Hire Me!
-    </button>
+      My Upwork Profile!
+    </Link>
   );
 }
 
 export default function Header() {
   return (
-    <header className="absolute left-0 top-0 z-50 w-full">
+    <header className="fixed md:backdrop-blur-[8px] left-0 top-0 z-50 w-full">
       <div
         className={`${container} mx-auto flex items-center justify-between py-4`}
       >
